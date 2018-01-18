@@ -1,7 +1,7 @@
 class NamesController < ApplicationController
 
   def name_cap_method
-    input_name = params["my_name"]
+    input_name = params[:my_name]
     name_upcase = input_name.upcase
     
     if name_upcase[0] == "A"     #or i could have used namne_upcase.start_with? == "A", or          name_upcase.first = "A"
@@ -12,14 +12,14 @@ class NamesController < ApplicationController
 
   def guess_num_method
     correct_number = 42
-    input_number = params["my_guess"].to_i
+    input_number = params[:my_guess].to_i
 
     if input_number > correct_number
-      render json: {message: "You are incorrect, please enter a lower number"}
+      render json: {your_guess: input_number, message: "You are incorrect, please enter a lower number."}
     elsif input_number < correct_number
-      render json: {message: "You are incorrect, please enter a higher number"}
+      render json: {your_guess: input_number, message: "You are incorrect, please enter a higher number."}
     else
-    render json: {message: "Congrats, you guessed the correct number"}
+    render json: {your_guess: input_number, message: "Congrats, you guessed the correct number!"}
     end
   end
 
