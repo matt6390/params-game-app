@@ -1,5 +1,7 @@
 require 'unirest'
 
+system 'clear'
+
 print "Give me your name: "
 user_name = gets.chomp
 
